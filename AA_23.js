@@ -18,15 +18,15 @@ class Vehiculo{
     visualizarServicios() {
         console.log(`\nServicios del vehículo ${this.marca} ${this.modelo}:`);
         // Recorremos los servicios del array 
-        this.servicios.forEach((servicio, i) => 
-        {
+        for (let i = 0; i < this.servicios.length; i++){
+            let servicio = this.servicios[i];
             console.log(` ${i + 1}. ${servicio.tipoServicio}\n 
                 Estado: ${servicio.estado}\n
                 Descuento: ${servicio.descuento*100}%\n 
                 Precio original: ${servicio.precioOriginal}€\n 
                 Precio final: ${servicio.precioFinal}€\n 
                 Fecha Realizacion servoicio:${servicio.fecha}\n`);
-        });
+        };
     }
     // metodo para filtrar por estado que especifiquemos como parametro
     filtrarServiciosPorEstado(estadoBuscado) {
