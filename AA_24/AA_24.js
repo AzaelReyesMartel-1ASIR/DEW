@@ -15,12 +15,16 @@ let TiposAct = new TipoActividad();
 
 // Creamos animales
 let Perro1 = new Perro("Princesa", "Pitbull", 5, EstadosAct.array[0], EstadosSalud.array[1], AreasAlojamiento.array[2]);
+let Perro2 = new Perro("Noa", "Mil Leches", 5, EstadosAct.array[1], EstadosSalud.array[0], AreasAlojamiento.array[1]);
 let Gato1 = new Gato("Mishifu", "Gato", 2, EstadosAct.array[2], EstadosSalud.array[0], AreasAlojamiento.array[0]);
 let Loro1 = new Loro("Wally", "Loro", 6, EstadosAct.array[1], EstadosSalud.array[2], AreasAlojamiento.array[1]);
 
 // Añadimos actividades a cada objeto de animal
 Perro1.añadirActividades(TiposAct.array[2]);
 Perro1.añadirActividades(TiposAct.array[1]);
+
+Perro2.añadirActividades(TiposAct.array[0]);
+Perro2.añadirActividades(TiposAct.array[2]);
 
 Gato1.añadirActividades(TiposAct.array[1]);
 Gato1.añadirActividades(TiposAct.array[0]);
@@ -30,11 +34,12 @@ Loro1.añadirActividades(TiposAct.array[2]);
 
 // Mostramos animales con su info y actividades por consola
 Perro1.mostrarAnimales();
+Perro2.mostrarAnimales();
 Gato1.mostrarAnimales();
 Loro1.mostrarAnimales();
 
 // Recogemos los animales en un array
-const animales = [Perro1, Gato1, Loro1];
+const animales = [Perro1, Perro2, Gato1, Loro1];
 
 // Creamos dos arrays para recoger los datos para el grafico
 const nombres = [];
@@ -73,7 +78,7 @@ new Chart(ctx, {
     labels: nombres,
     datasets: [{
       label: 'Estado de salud',
-      data: [1, 1, 1],
+      data: [1, 1, 1, 1],
       backgroundColor: colores,
       borderWidth: 1
     }]
@@ -91,6 +96,7 @@ new Chart(ctx, {
       }
     },
     scales: {
+      y: { beginAtZero: true },
       x: { title: { display: true, text: 'Animales' } }
     }
   }
