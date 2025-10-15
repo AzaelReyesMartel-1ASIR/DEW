@@ -125,11 +125,15 @@ let fechas = [];
 console.log(nombre_clientes);
 
 // Bucle recorre clientes y mete a array fechas convertidas a Date
-clientes.forEach(
+for(let i = 0; i< clientes.length; i++){
+    fechas.push(new Date(clientes[i].fechaNacimiento));
+}
 
-    cliente => fechas.push(new Date(cliente.fechaNacimiento))
+//clientes.forEach(
 
-);
+  //  cliente => fechas.push(new Date(cliente.fechaNacimiento))
+
+//
 
 // Variables anio actual
 let anioActual = new Date();
