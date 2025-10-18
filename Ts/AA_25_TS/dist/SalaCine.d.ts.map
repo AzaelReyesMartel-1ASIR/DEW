@@ -1,0 +1,1 @@
+{"version":3,"file":"SalaCine.d.ts","sourceRoot":"","sources":["../SalaCine.ts"],"names":[],"mappings":"AACA,qBAAa,QAAQ;IACE,OAAO,EAAE,MAAM;IAAS,cAAc,EAAE,MAAM;IAAS,kBAAkB,EAAE,MAAM;gBAAjF,OAAO,EAAE,MAAM,EAAS,cAAc,EAAE,MAAM,EAAS,kBAAkB,EAAE,MAAM;IAMpG,eAAe;IAMf,sBAAsB,CAAC,MAAM,EAAE,MAAM;CAKxC"}
