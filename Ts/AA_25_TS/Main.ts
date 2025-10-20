@@ -2,12 +2,14 @@
 import { Pelicula } from "./Pelicula.js";
 import { SalaCine } from "./SalaCine.js";
 import { Reserva } from "./Reserva.js";
+import { EstadoReserva } from "./EstadoReserva.js";
+import { ClasificacionEdad } from "./ClasificacionEdad.js";
 
 // Creamos objetos con instancias de clase Pelicula
-const peli1 = new Pelicula("KnY", 155, "+12", 7, 1);
-const peli2 = new Pelicula("KnY2", 155, "TP", 7, 2);
-const peli3 = new Pelicula("KnY3", 155, "+12", 7, 3);
-const peli4 = new Pelicula("Chainsaw Man", 155, "TP", 7, 4);
+const peli1 = new Pelicula("KnY", 155, ClasificacionEdad.ClasEdad2, 7, 1);
+const peli2 = new Pelicula("KnY2", 155, ClasificacionEdad.ClasEdad1, 7, 2);
+const peli3 = new Pelicula("KnY3", 155, ClasificacionEdad.ClasEdad4, 7, 3);
+const peli4 = new Pelicula("Chainsaw Man", 155, ClasificacionEdad.ClasEdad3, 7, 4);
 
 // Creamos Salas de Cine
 const sala1 = new SalaCine(1, 50, 15);
@@ -16,12 +18,12 @@ const sala3 = new SalaCine(3, 50, 1);
 const sala4 = new SalaCine(4, 50, 10);
 
 // Creamos Reservas
-const reserva1 = new Reserva("Azael", "Chainsaw Man", 6, new Date('2025-09-11'), "22:00", 0, "pendiente");
-const reserva2 = new Reserva("Dani", "KnY3", 6, new Date('2025-10-31'), "21:00", 0, "pendiente");
-const reserva3 = new Reserva("Jose", "KnY", 10, new Date('2025-11-30'), "23:00", 0, "pendiente");
-const reserva4 = new Reserva("Yeray", "KnY", 5, new Date('2025-11-31'), "23:00", 0, "pendiente");
-const reserva5 = new Reserva("Josue", "KnY", 6, new Date('2025-11-31'), "23:00", 0, "pendiente");
-const reserva6 = new Reserva("Maulla", "Chainsaw Man", 6, new Date('2025-11-31'), "23:00", 0, "pendiente");
+const reserva1 = new Reserva("Azael", "Chainsaw Man", 6, new Date('2025-09-11'), "22:00", 0, EstadoReserva.estadoR1);
+const reserva2 = new Reserva("Dani", "KnY3", 6, new Date('2025-10-31'), "21:00", 0, EstadoReserva.estadoR1);
+const reserva3 = new Reserva("Jose", "KnY", 10, new Date('2025-11-30'), "23:00", 0, EstadoReserva.estadoR1);
+const reserva4 = new Reserva("Yeray", "KnY", 5, new Date('2025-11-31'), "23:00", 0, EstadoReserva.estadoR1);
+const reserva5 = new Reserva("Josue", "KnY", 6, new Date('2025-11-31'), "23:00", 0, EstadoReserva.estadoR1);
+const reserva6 = new Reserva("Maulla", "Chainsaw Man", 6, new Date('2025-11-31'), "23:00", 0, EstadoReserva.estadoR1);
 
 // Reservamos butacas, verificando disponibilidad y calculando precio
 reserva1.ReservaButacasDisponibles( reserva1.nombreCliente, peli4.precioBase, peli4.clasEdad, peli4.titulo, sala4);

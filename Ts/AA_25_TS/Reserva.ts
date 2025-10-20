@@ -1,5 +1,8 @@
 // Importamos clase SalaCine
 import { SalaCine } from "./SalaCine.js";
+import { EstadoReserva } from "./EstadoReserva.js";
+import { ClasificacionEdad } from "./ClasificacionEdad.js";
+
 // Clase Reserva
 export class Reserva {
     // arrays de reserva estaticos vacios
@@ -43,14 +46,14 @@ Estado Reserva: ${this.estadoReserva}`);
         this.precioTotal = precioBasePeli * this.numEntradas;
         // Condicional si el numero de entradas supera disponibles, se cancela
         if (sala.butacasDisponibles >= this.numEntradas) {
-            this.estadoReserva = "confirmada";
+            this.estadoReserva = EstadoReserva.estadoR2;
             // Si num entradas mayor a 5, descuento
             if (this.numEntradas>5) {
             this.precioTotal *= (1 - 0.10);
             console.log(`Se aplica 10% a precio total para el cliente ${nombre}`);
             }
             // Si es para todo publico, descuento
-            if (clasEdadPeli === "TP") {
+            if (clasEdadPeli === ClasificacionEdad.ClasEdad1) {
                 this.precioTotal *= (1 - 0.05);
                 console.log(`Se aplica 5% más a precio total para el cliente ${nombre}`);
             }
@@ -58,23 +61,23 @@ Estado Reserva: ${this.estadoReserva}`);
             sala.butacasDisponibles -= this.numEntradas;
             // Si son mas entradas que butacas disponibles, se cancela
         } else {
-            this.estadoReserva = "cancelada";
+            this.estadoReserva = EstadoReserva.estadoR3;
         }
     }
     // Metodo cancelar reserva y devolver numero de butacas
     ReservaCancelar(sala: SalaCine){
-        this.estadoReserva = "cancelada";
+        this.estadoReserva = EstadoReserva.estadoR3;
         sala.butacasDisponibles += this.numEntradas;
     }
     // Metodo guardar reservas por estado
     ReservasConsultar(reserva: Reserva){
-        if(this.estadoReserva === "cancelada"){
+        if(this.estadoReserva === EstadoReserva.estadoR3){
             Reserva.arrC.push(reserva);            
         }
-        if (this.estadoReserva === "confirmada"){
+        if (this.estadoReserva === EstadoReserva.estadoR2){
             Reserva.arrConf.push(reserva);
         }
-        if (this.estadoReserva === "pendiente"){
+        if (this.estadoReserva === EstadoReserva.estadoR1){
             Reserva.arrP.push(reserva);
         }
     }
