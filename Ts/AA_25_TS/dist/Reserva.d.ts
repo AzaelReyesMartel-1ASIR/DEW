@@ -13,7 +13,7 @@ export declare class Reserva {
     constructor(nombreCliente: string, peliculaR: string, numEntradas: number, fecha: Date, hora: string, precioTotal: number, estadoReserva: string);
     ReservaMostrar(): void;
     ReservaMostrarFiltro(): void;
-    ReservaButacasDisponibles(nombre: string, precioBasePeli: number, clasEdadPeli: string, tituloPeli: string, sala: SalaCine): void;
+    ReservaButacasDisponibles(nombre: string, precioBasePeli: number, clasEdadPeli: string, sala: SalaCine): void;
     ReservaCancelar(sala: SalaCine): void;
     ReservasConsultar(reserva: Reserva): void;
 }

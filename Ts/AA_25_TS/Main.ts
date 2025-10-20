@@ -26,17 +26,17 @@ const reserva5 = new Reserva("Josue", "KnY", 6, new Date('2025-11-31'), "23:00",
 const reserva6 = new Reserva("Maulla", "Chainsaw Man", 6, new Date('2025-11-31'), "23:00", 0, EstadoReserva.estadoR1);
 
 // Reservamos butacas, verificando disponibilidad y calculando precio
-reserva1.ReservaButacasDisponibles( reserva1.nombreCliente, peli4.precioBase, peli4.clasEdad, peli4.titulo, sala4);
-reserva2.ReservaButacasDisponibles(reserva2.nombreCliente, peli3.precioBase, peli3.clasEdad, peli3.titulo, sala3);
-reserva3.ReservaButacasDisponibles(reserva3.nombreCliente, peli1.precioBase, peli1.clasEdad, peli1.titulo, sala1);
-reserva4.ReservaButacasDisponibles(reserva4.nombreCliente, peli1.precioBase, peli1.clasEdad, peli1.titulo, sala1);
+reserva1.ReservaButacasDisponibles( reserva1.nombreCliente, peli4.precioBase, peli4.clasEdad, sala4);
+reserva2.ReservaButacasDisponibles(reserva2.nombreCliente, peli3.precioBase, peli3.clasEdad, sala3);
+reserva3.ReservaButacasDisponibles(reserva3.nombreCliente, peli1.precioBase, peli1.clasEdad, sala1);
+reserva4.ReservaButacasDisponibles(reserva4.nombreCliente, peli1.precioBase, peli1.clasEdad, sala1);
 // Pendiente reserva5.ReservaButacasDisponibles(peli1.precioBase, peli1.clasEdad, peli1.titulo, sala1);
 
 // Cancelo una reserva
 reserva1.ReservaCancelar(sala4);
 
 // Reservo de nuevo las butacas que he cancelado
-reserva6.ReservaButacasDisponibles(reserva6.nombreCliente, peli4.precioBase, peli4.clasEdad, peli4.titulo, sala4);
+reserva6.ReservaButacasDisponibles(reserva6.nombreCliente, peli4.precioBase, peli4.clasEdad, sala4);
 
 // Filtramos las reservas
 reserva1.ReservasConsultar(reserva1);

@@ -42,7 +42,7 @@ Estado Reserva: ${this.estadoReserva}`);
         });
     }
     // Metodo para reservar butacas, verificando disponibilidad y calculando precio total
-    ReservaButacasDisponibles(nombre: string, precioBasePeli: number, clasEdadPeli: string, tituloPeli: string, sala: SalaCine) {
+    ReservaButacasDisponibles(nombre: string, precioBasePeli: number, clasEdadPeli: string, sala: SalaCine) {
         this.precioTotal = precioBasePeli * this.numEntradas;
         // Condicional si el numero de entradas supera disponibles, se cancela
         if (sala.butacasDisponibles >= this.numEntradas) {
