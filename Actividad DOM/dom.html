@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formulario Completo Dinámico</title>
+</head>
+<body>
+
+<h1>Formulario Completo Dinámico</h1>
+
+<!-- Contenedor del formulario -->
+<div id="formContainer"></div>
+
+<!-- Template para fila de tabla -->
+<template id="templateFila">
+  <tr>
+    <td class="id"></td>
+    <td class="nombre"></td>
+    <td class="edad"></td>
+    <td class="ciudad"></td>
+  </tr>
+</template>
+
+<script>
+  // --------------------------
+  // Datos de ejemplo
+  // --------------------------
+  const ciudades = [
+    { id: 1, nombre: "Las Palmas de Gran Canaria" },
+    { id: 2, nombre: "Santa Cruz de Tenerife" },
+    { id: 3, nombre: "La Laguna" }
+  ];
+
+  const estudiantes = [
+    { id: 1, nombre: "Juan", edad: 20, ciudad: "Las Palmas de Gran Canaria" },
+    { id: 2, nombre: "Ana", edad: 22, ciudad: "Santa Cruz de Tenerife" },
+    { id: 3, nombre: "Luis", edad: 21, ciudad: "La Laguna" }
+  ];
+
+  const checkboxesOpciones = [
+    { id: 1, nombre: "Matemáticas" },
+    { id: 2, nombre: "Lengua" },
+    { id: 3, nombre: "Ciencias" }
+  ];
+
+  // --------------------------
+  // Crear el formulario
+  // --------------------------
+  const form = document.createElement("form");
+  form.id = "formularioCompleto";
+
+  // Input texto
+  const labelNombre = document.createElement("label");
+  labelNombre.htmlFor = "nombre";
+  labelNombre.textContent = "Nombre: ";
+  const inputNombre = document.createElement("input");
+  inputNombre.type = "text";
+  inputNombre.id = "nombre";
+  inputNombre.value = "Ejemplo Nombre";
+  inputNombre.setAttribute("data-info", "Nombre del estudiante");
+
+  form.appendChild(labelNombre);
+  form.appendChild(inputNombre);
+  form.appendChild(document.createElement("br"));
+
+  // Input número
+  const labelEdad = document.createElement("label");
+  labelEdad.htmlFor = "edad";
+  labelEdad.textContent = "Edad: ";
+  const inputEdad = document.createElement("input");
+  inputEdad.type = "number";
+  inputEdad.id = "edad";
+  inputEdad.value = 18;
+  inputEdad.setAttribute("data-info", "Edad del estudiante");
+
+  form.appendChild(labelEdad);
+  form.appendChild(inputEdad);
+  form.appendChild(document.createElement("br"));
+
+  // Select dinámico
+  const labelCiudad = document.createElement("label");
+  labelCiudad.htmlFor = "ciudad";
+  labelCiudad.textContent = "Ciudad: ";
+  const selectCiudad = document.createElement("select");
+  selectCiudad.id = "ciudad";
+
+  ciudades.forEach(function(ciudad) {
+    const option = document.createElement("option");
+    option.value = ciudad.id;
+    option.textContent = ciudad.nombre;
+    selectCiudad.appendChild(option);
+  });
+
+  // Agregar opción extra no presente en el array
+  const optionExtra = document.createElement("option");
+  optionExtra.value = 0;
+  optionExtra.textContent = "Tenerife Sur";
+  selectCiudad.appendChild(optionExtra);
+
+  form.appendChild(labelCiudad);
+  form.appendChild(selectCiudad);
+  form.appendChild(document.createElement("br"));
+
+  // Checkboxes dinámicos
+  const labelAsignaturas = document.createElement("label");
+  labelAsignaturas.textContent = "Asignaturas: ";
+  form.appendChild(labelAsignaturas);
+  form.appendChild(document.createElement("br"));
+
+  checkboxesOpciones.forEach(function(opcion) {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "chk-" + opcion.id;
+    checkbox.value = opcion.nombre;
+
+    const label = document.createElement("label");
+    label.htmlFor = "chk-" + opcion.id;
+    label.textContent = opcion.nombre;
+
+    form.appendChild(checkbox);
+    form.appendChild(label);
+    form.appendChild(document.createElement("br"));
+  });
+
+  // Añadir form al contenedor
+  const container = document.getElementById("formContainer");
+  container.appendChild(form);
+
+  // --------------------------
+  // Crear tabla dinámica usando template
+  // --------------------------
+  const tabla = document.createElement("table");
+  tabla.border = 1;
+
+  const thead = tabla.insertRow();
+  ["ID", "Nombre", "Edad", "Ciudad"].forEach(function(nombreCol) {
+    const th = document.createElement("th");
+    th.textContent = nombreCol;
+    thead.appendChild(th);
+  });
+
+  const tbody = document.createElement("tbody");
+  const templateFila = document.getElementById("templateFila");
+
+  estudiantes.forEach(function(est) {
+    const clone = templateFila.content.cloneNode(true);
+    clone.querySelector(".id").textContent = est.id;
+    clone.querySelector(".nombre").textContent = est.nombre;
+    clone.querySelector(".edad").textContent = est.edad;
+    clone.querySelector(".ciudad").textContent = est.ciudad;
+
+    tbody.appendChild(clone);
+  });
+
+  tabla.appendChild(tbody);
+  container.appendChild(document.createElement("br"));
+  container.appendChild(tabla);
+
+</script>
+
+</body>
+</html>

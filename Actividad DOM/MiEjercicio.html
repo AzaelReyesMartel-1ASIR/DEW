@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentu</title>
+</head>
+<body>
+
+    <!-- Formulario -->
+    <div id="formContenendor"></div>
+
+    <script>
+
+        // Datos ya cargados
+        const productosEjemplo = [
+            { codigo: 1, nombre: "Auriculares", precio:20, categoria:"Elcetrónica", disponibilidad:"Sí"},
+            { codigo: 2, nombre: "Camiseta", precio:17, categoria:"Ropa", disponibilidad:"Sí"},
+            { codigo: 3, nombre: "Pan integral", precio:0.50, categoria:"Alimentación", disponibilidad:"Sí"}
+        ]
+
+        const categorias = [
+            { id: 1, nombre: "Electrónica" },
+            { id: 2, nombre: "Ropa" },
+            { id: 3, nombre: "Alimentación" }
+        ];
+
+        const RadioBotones = [
+            { id: 1, nombre: "Sí" },
+            { id: 2, nombre: "No" }
+        ]
+        // Crear formulario
+        const form = document.createElement("form");
+        form.id = "formularioEntero";
+
+        // Input Codigo
+        const labelCodigo = document.createElement("label");
+        labelCodigo.htmlFor = "codigo";
+        labelCodigo.textContent = "Codigo del Producto: ";
+        const inputCodigo = document.createElement("input");
+        inputCodigo.type = "number";
+        inputCodigo.id = "codigo";
+        inputCodigo.value = 4;
+        inputCodigo.setAttribute("data-info", "Codigo de producto");
+
+        form.appendChild(labelCodigo);
+        form.appendChild(inputCodigo);
+        form.appendChild(document.createElement("br"));
+
+        // Input Nombre de producto
+        const labelNombreProducto = document.createElement("label");
+        labelNombreProducto.htmlFor = "nombre";
+        labelNombreProducto.textContent = "Nombre del Producto: ";
+        const inputNombreProducto = document.createElement("input");
+        inputNombreProducto.type = "text";
+        inputNombreProducto.id = "nombre";
+        inputNombreProducto.value = "Ejemplo Nombre de Producto";
+        inputNombreProducto.setAttribute("data-info", "Nombre del Producto");
+
+        form.appendChild(labelNombreProducto);
+        form.appendChild(inputNombreProducto);
+        form.appendChild(document.createElement("br"));
+
+        // input precio
+        const labelPrecio = document.createElement("label");
+        labelPrecio.htmlFor = "precio";
+        labelPrecio.textContent = "Precio del Producto: ";
+        const inputPrecio = document.createElement("input");
+        inputPrecio.type = "number";
+        inputPrecio.id = "precio";
+        inputPrecio.value = 15;
+        inputPrecio.setAttribute("data-info", "Precio del Producto");
+
+        form.appendChild(labelPrecio);
+        form.appendChild(inputPrecio);
+        form.appendChild(document.createElement("br"));
+
+        // Select de Categoria
+        const labelCategoria = document.createElement("label");
+        labelCategoria.htmlFor = "categoria";
+        labelCategoria.textContent = "Categoria de Producto";
+        const selectCategoria = document.createElement("select");
+        selectCategoria.id = "categoria";
+
+        categorias.forEach(function(categoria){
+            const option = document.createElement("option");
+            option.value = categoria.id;
+            option.textContent = categoria.nombre;
+            selectCategoria.appendChild(option);
+        });
+
+        form.appendChild(labelCategoria);
+        form.appendChild(selectCategoria);
+        form.appendChild(document.createElement("br"));
+
+        // Radio Botones
+        const labelDisponibilidad = document.createElement("label");
+        labelDisponibilidad.textContent = "disponibilidad: ";
+        form.appendChild(labelDisponibilidad);
+        form.appendChild(document.createElement("br"));
+
+        RadioBotones.forEach(function(radioBoton){
+            const radio = document.createElement("input");
+            radio.type = "radio";
+            radio.id = "radio-" + radioBoton.id;
+            radio.value = radioBoton.nombre;
+
+            const label = document.createElement("label");
+            label.htmlFor = "radio-" + radioBoton.id;
+            label.textContent = radioBoton.nombre;
+            
+            form.appendChild(radio);
+            form.appendChild(label);
+            form.appendChild(document.createElement("br"));
+        });
+
+        // Boton de envio
+        const botonEnviar = document.createElement("button");
+        botonEnviar.type = "submit";
+        botonEnviar.textContent = "Enviar";
+        form.appendChild(botonEnviar);
+        form.appendChild(document.createElement("br"));
+
+        // Añadimos el formulario al contenedor
+        const contenedor = document.getElementById("formContenedor");
+        contenedor.appendChild(form);
+
+    </script>
+    
+</body>
+</html>
