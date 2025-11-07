@@ -8,11 +8,20 @@
 <body>
 
     <!-- Formulario -->
-    <div id="formContenendor"></div>
+    <div id="formContenedor">
+
+    </div>
+
+    <div id="tableContenedor">
+
+    </div>
 
     <script>
 
         // Datos ya cargados
+
+        const columns = ["ID", "NOMBRE", "PRECIO", "CATEGORIA", "DISPONBILIDAD", "ACCION"];
+
         const productosEjemplo = [
             { codigo: 1, nombre: "Auriculares", precio:20, categoria:"Elcetrónica", disponibilidad:"Sí"},
             { codigo: 2, nombre: "Camiseta", precio:17, categoria:"Ropa", disponibilidad:"Sí"},
@@ -124,6 +133,52 @@
         // Añadimos el formulario al contenedor
         const contenedor = document.getElementById("formContenedor");
         contenedor.appendChild(form);
+
+
+        // Crear tabla
+        // Seleccionar el contenedor
+        const tablaContainer = document.getElementById("tableContenedor");
+
+        // Crear el elemento tabla
+        const tabla = document.createElement("table");
+
+        // -------------------------------
+        // Crear encabezado de la tabla
+        // -------------------------------
+        const thead = document.createElement("thead");
+        const filaEncabezado = document.createElement("tr");
+
+        columns.forEach(function(columna) {
+            const th = document.createElement("th");
+            th.textContent = columna;
+            filaEncabezado.appendChild(th);
+        });
+        thead.appendChild(filaEncabezado);
+        tabla.appendChild(thead);
+
+        // -------------------------------
+        // Crear cuerpo de la tabla
+        // -------------------------------
+        const tbody = document.createElement("tbody");
+
+        productosEjemplo.forEach(function(filaDatos) {
+            const fila = document.createElement("tr");
+
+            filaDatos.forEach(function(celdaDato) {
+                const td = document.createElement("td");
+                td.textContent = celdaDato[i];
+                fila.appendChild(td);
+            });
+
+            tbody.appendChild(fila);
+        });
+
+        tabla.appendChild(tbody);
+
+        // -------------------------------
+        // Añadir la tabla al contenedor
+        // -------------------------------
+        tablaContainer.appendChild(tabla);
 
     </script>
     
