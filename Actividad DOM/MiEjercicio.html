@@ -3,7 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentu</title>
+    <title>AA_31 Azael (Odio Angular)</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        #formContenedor, #tableContenedor {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            /* Sombra personalizada con tinte verde */
+            box-shadow: 0 0.5rem 1.5rem rgba(25, 135, 84, 0.2);
+        }
+
+        form br {
+            display: none; /* Ocultamos los <br> para un mejor control del espaciado */
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        form input, form select, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            box-sizing: border-box;
+        }
+
+        /* Botón de envío verde */
+        button[type="submit"] {
+            background-color: #198754;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #157347;
+        }
+
+        /* Botón de borrar rojo */
+        .botonBorrar {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .botonBorrar:hover {
+            background-color: #bb2d3b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #343a40;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 
@@ -136,10 +224,7 @@
 
 
         // Crear tabla
-        // Seleccionar el contenedor
         const tablaContainer = document.getElementById("tableContenedor");
-
-        // Crear el elemento tabla
         const tabla = document.createElement("table");
 
         // -------------------------------
@@ -164,11 +249,34 @@
         productosEjemplo.forEach(function(filaDatos) {
             const fila = document.createElement("tr");
 
-            filaDatos.forEach(function(celdaDato) {
-                const td = document.createElement("td");
-                td.textContent = celdaDato[i];
-                fila.appendChild(td);
-            });
+            // Crear y añadir celdas para cada propiedad del producto
+            const tdCodigo = document.createElement("td");
+            tdCodigo.textContent = filaDatos.codigo;
+            fila.appendChild(tdCodigo);
+
+            const tdNombre = document.createElement("td");
+            tdNombre.textContent = filaDatos.nombre;
+            fila.appendChild(tdNombre);
+
+            const tdPrecio = document.createElement("td");
+            tdPrecio.textContent = filaDatos.precio;
+            fila.appendChild(tdPrecio);
+
+            const tdCategoria = document.createElement("td");
+            tdCategoria.textContent = filaDatos.categoria;
+            fila.appendChild(tdCategoria);
+
+            const tdDisponibilidad = document.createElement("td");
+            tdDisponibilidad.textContent = filaDatos.disponibilidad;
+            fila.appendChild(tdDisponibilidad);
+
+            // Añadir la celda para el botón de acción
+            const tdAccion = document.createElement("td");
+            const botonBorrar = document.createElement("button");
+            botonBorrar.textContent = "Borrar Producto";
+            botonBorrar.className = "botonBorrar";
+            tdAccion.appendChild(botonBorrar);
+            fila.appendChild(tdAccion);
 
             tbody.appendChild(fila);
         });
