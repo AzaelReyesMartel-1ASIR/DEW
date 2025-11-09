@@ -23,7 +23,7 @@
         }
 
         form br {
-            display: none; /* Ocultamos los <br> para un mejor control del espaciado */
+            display: none;
         }
 
         form label {
@@ -112,8 +112,8 @@
 
         const productosEjemplo = [
             { codigo: 1, nombre: "Auriculares", precio:20, categoria:"Elcetrónica", disponibilidad:"Sí"},
-            { codigo: 2, nombre: "Camiseta", precio:17, categoria:"Ropa", disponibilidad:"Sí"},
-            { codigo: 3, nombre: "Pan integral", precio:0.50, categoria:"Alimentación", disponibilidad:"Sí"}
+            { codigo: 2, nombre: "Camiseta", precio:17, categoria:"Ropa", disponibilidad:"Nel"},
+            { codigo: 3, nombre: "Pan integral", precio:0.50, categoria:"Alimentación", disponibilidad:"Nop"}
         ]
 
         const categorias = [
@@ -214,7 +214,7 @@
         // Boton de envio
         const botonEnviar = document.createElement("button");
         botonEnviar.type = "submit";
-        botonEnviar.textContent = "Enviar";
+        botonEnviar.textContent = "Añadir Producto";
         form.appendChild(botonEnviar);
         form.appendChild(document.createElement("br"));
 
